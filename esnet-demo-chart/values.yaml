@@ -1,5 +1,5 @@
 image:
-  repository: nginx
+  repository: hadoopbhanu/kubestuff 
   tag: latest
 service:
   type: ClusterIP
