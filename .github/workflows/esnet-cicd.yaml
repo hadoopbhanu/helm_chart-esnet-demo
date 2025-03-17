@@ -89,7 +89,7 @@ jobs:
     # Build Docker image
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/kubestuff:${{github.run_id}} esnet_webapp/
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/kubestuff:${{github.run_id}} .
 
     # Push Docker image to DockerHub
     - name: Push Docker image
