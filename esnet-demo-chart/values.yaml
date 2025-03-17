@@ -1,0 +1,13 @@
+image:
+  repository: hadoopbhanu/kubestuff 
+  tag: latest
+service:
+  type: ClusterIP
+  port: 80
+ingress:
+  enabled: true
+  hosts:
+    - host: "" #example.local
+      paths:
+        - /
+
