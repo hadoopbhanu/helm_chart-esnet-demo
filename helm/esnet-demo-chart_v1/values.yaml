@@ -1,6 +1,6 @@
 image:
   repository: hadoopbhanu/kubestuff 
-  tag: "13903482981"
+  tag: "13903513991"
 service:
   type: ClusterIP
   port: 80
