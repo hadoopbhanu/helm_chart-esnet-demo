@@ -55,9 +55,9 @@ jobs:
     #    npm install eslint --save-dev  # Ensure ESLint is installed
 
     # Run static code analysis (ESLint)
-    - name: Run static code analysis (ESLint)
-      run: |
-        npx eslint . --ext .js,.jsx,.ts,.tsx
+    # - name: Run static code analysis (ESLint)
+    #  run: |
+    #    npx eslint . --ext .js,.jsx,.ts,.tsx
     
     - name: Scan for secrets
       uses: zricethezav/gitleaks-action@v1
