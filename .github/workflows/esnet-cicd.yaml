@@ -16,10 +16,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      with:
-        sparse-checkout: |
-          esnet_webapp
-        sparse-checkout-cone-mode: false
 
     # Set up Node.js
     - name: Set up Node.js
@@ -44,10 +40,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      with:
-        sparse-checkout: |
-          esnet_webapp
-        sparse-checkout-cone-mode: false 
 
     # Set up Node.js
     - name: Set up Node.js
@@ -82,10 +74,6 @@ jobs:
 
     - name: Checkout repository
       uses: actions/checkout@v4
-      with:
-        sparse-checkout: |
-          esnet_webapp
-        sparse-checkout-cone-mode: false
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
