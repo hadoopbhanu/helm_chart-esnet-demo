@@ -1,87 +1,136 @@
 
-import { Network, Mail, Github, Twitter } from 'lucide-react';
+import React from 'react';
+import { 
+  Facebook, 
+  Twitter, 
+  Linkedin, 
+  Github,
+  ChevronRight 
+} from 'lucide-react';
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    <footer className="bg-esnet-darker px-6 lg:px-10 py-16">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Logo & Info */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-2">
-              <Network className="w-7 h-7 text-esnet-blue" />
-              <span className="text-xl font-medium tracking-tight">
-                <span className="text-white">ES.</span>
-                <span className="text-gradient-blue">Net</span>
-              </span>
-            </div>
-            
-            <p className="text-gray-400 text-sm">
-              Advanced networking infrastructure for research and education communities, 
-              enabling global collaboration and discovery.
+    <footer className="bg-foreground text-white">
+      <div className="section-container py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div>
+            <h3 className="text-xl font-bold mb-6">ES.<span className="text-primary">Network</span></h3>
+            <p className="text-gray-300 mb-6">
+              Providing high-performance networking solutions for research and education communities worldwide.
             </p>
-            
             <div className="flex space-x-4">
-              <a href="#" className="w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors duration-300">
-                <Mail className="w-4 h-4" />
+              <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+                <Facebook size={20} />
               </a>
-              <a href="#" className="w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors duration-300">
-                <Github className="w-4 h-4" />
+              <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+                <Twitter size={20} />
               </a>
-              <a href="#" className="w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors duration-300">
-                <Twitter className="w-4 h-4" />
+              <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+                <Linkedin size={20} />
+              </a>
+              <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+                <Github size={20} />
               </a>
             </div>
           </div>
           
-          {/* Navigation Columns */}
-          {[
-            {
-              title: 'Company',
-              links: ['About', 'Team', 'Careers', 'Press', 'Contact']
-            },
-            {
-              title: 'Resources',
-              links: ['Documentation', 'Support', 'API', 'Status', 'Blog']
-            },
-            {
-              title: 'Legal',
-              links: ['Terms', 'Privacy', 'Security', 'Compliance', 'Accessibility']
-            }
-          ].map((column) => (
-            <div key={column.title}>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
-                {column.title}
-              </h3>
-              <ul className="space-y-3">
-                {column.links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Solutions</h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="#" className="text-gray-300 hover:text-primary flex items-center transition-colors">
+                  <ChevronRight size={16} className="mr-2" />
+                  Network Infrastructure
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-primary flex items-center transition-colors">
+                  <ChevronRight size={16} className="mr-2" />
+                  Security Services
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-primary flex items-center transition-colors">
+                  <ChevronRight size={16} className="mr-2" />
+                  Performance Monitoring
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-primary flex items-center transition-colors">
+                  <ChevronRight size={16} className="mr-2" />
+                  Cloud Integration
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-primary flex items-center transition-colors">
+                  <ChevronRight size={16} className="mr-2" />
+                  Collaboration Tools
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Resources</h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="#" className="text-gray-300 hover:text-primary flex items-center transition-colors">
+                  <ChevronRight size={16} className="mr-2" />
+                  Documentation
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-primary flex items-center transition-colors">
+                  <ChevronRight size={16} className="mr-2" />
+                  Research Articles
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-primary flex items-center transition-colors">
+                  <ChevronRight size={16} className="mr-2" />
+                  Case Studies
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-primary flex items-center transition-colors">
+                  <ChevronRight size={16} className="mr-2" />
+                  Network Status
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-primary flex items-center transition-colors">
+                  <ChevronRight size={16} className="mr-2" />
+                  Support Portal
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Newsletter</h3>
+            <p className="text-gray-300 mb-4">
+              Subscribe to our newsletter for the latest updates and insights.
+            </p>
+            <form className="space-y-3">
+              <div className="relative">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="w-full py-2 px-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full py-2 px-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
         
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">
-            © 2023 ESnet. All rights reserved.
-          </p>
-          
-          <div className="mt-4 md:mt-0 flex space-x-6">
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-              Status
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-              Sitemap
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-              Changelog
-            </a>
-          </div>
+        <div className="mt-12 pt-8 border-t border-white/10 text-center text-gray-400 text-sm">
+          <p>© {new Date().getFullYear()} ES.Network. All rights reserved.</p>
         </div>
       </div>
     </footer>

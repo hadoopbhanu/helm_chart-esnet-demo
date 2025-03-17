@@ -1,12 +1,11 @@
 
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { cn } from '@/lib/utils';
-import { CircuitBoard, Layers, Network, Lock, Server, Settings, User, Info } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,98 +16,54 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <header className={cn(
-      'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-6 lg:px-10',
-      scrolled ? 'py-3 glass-panel' : 'py-5 bg-transparent'
-    )}>
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
-          <Network className="w-8 h-8 text-esnet-blue" />
-          <span className="text-xl font-medium tracking-tight">
-            <span className="text-white">ES.</span>
-            <span className="text-gradient-blue">Net</span>
-          </span>
-        </Link>
+    <header className={`fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <a href="#" className="text-2xl font-bold text-foreground tracking-tight">
+              ES.<span className="text-primary">Network</span>
+            </a>
+          </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-1">
-          {[
-            { name: 'Network', icon: <CircuitBoard className="w-4 h-4" />, path: '/network' },
-            { name: 'Services', icon: <Layers className="w-4 h-4" />, path: '/services' },
-            { name: 'Infrastructure', icon: <Server className="w-4 h-4" />, path: '/infrastructure' },
-            { name: 'Security', icon: <Lock className="w-4 h-4" />, path: '/security' },
-            { name: 'About', icon: <Info className="w-4 h-4" />, path: '/about' },
-          ].map((item, i) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className="px-4 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-1.5"
-            >
-              {item.icon}
-              <span>{item.name}</span>
-            </Link>
-          ))}
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-8">
+            <a href="#about" className="navbar-item">About</a>
+            <a href="#services" className="navbar-item">Services</a>
+            <a href="#technology" className="navbar-item">Technology</a>
+            <a href="#contact" className="navbar-item">Contact</a>
+          </nav>
 
-        {/* Right section */}
-        <div className="flex items-center space-x-1">
-          <button className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300">
-            <Settings className="w-5 h-5" />
-          </button>
-          <button className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300">
-            <User className="w-5 h-5" />
-          </button>
-          
+          <div className="hidden md:block">
+            <Button className="btn-primary">Get Started</Button>
+          </div>
+
           {/* Mobile menu button */}
-          <button 
-            className="p-2 md:hidden text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <div className="w-5 h-5 flex flex-col justify-center space-y-1.5">
-              <span className={cn(
-                "block h-0.5 bg-current transition-transform duration-300",
-                mobileMenuOpen ? "translate-y-2 rotate-45" : ""
-              )}></span>
-              <span className={cn(
-                "block h-0.5 bg-current transition-opacity duration-300",
-                mobileMenuOpen ? "opacity-0" : "opacity-100"
-              )}></span>
-              <span className={cn(
-                "block h-0.5 bg-current transition-transform duration-300",
-                mobileMenuOpen ? "-translate-y-2 -rotate-45" : ""
-              )}></span>
-            </div>
-          </button>
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
-      
+
       {/* Mobile menu */}
-      <div className={cn(
-        "md:hidden fixed inset-0 top-16 bg-esnet-darker/95 backdrop-blur-lg transition-all duration-300 ease-in-out z-40 overflow-hidden",
-        mobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-      )}>
-        <div className="p-6 space-y-4">
-          {[
-            { name: 'Network', icon: <CircuitBoard className="w-5 h-5" />, path: '/network' },
-            { name: 'Services', icon: <Layers className="w-5 h-5" />, path: '/services' },
-            { name: 'Infrastructure', icon: <Server className="w-5 h-5" />, path: '/infrastructure' },
-            { name: 'Security', icon: <Lock className="w-5 h-5" />, path: '/security' },
-            { name: 'About', icon: <Info className="w-5 h-5" />, path: '/about' },
-          ].map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className="flex items-center space-x-3 p-3 rounded-lg hover:bg-white/5 transition-colors duration-200"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <div className="flex-shrink-0 p-2 rounded-full bg-esnet-blue/10 text-esnet-blue">
-                {item.icon}
-              </div>
-              <span className="text-lg font-medium text-white">{item.name}</span>
-            </Link>
-          ))}
+      <div className={`md:hidden bg-white/95 backdrop-blur-md shadow-lg absolute w-full transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-96 py-4' : 'max-h-0 overflow-hidden'}`}>
+        <div className="px-4 pt-2 pb-4 space-y-6">
+          <a href="#about" className="block py-2 text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>About</a>
+          <a href="#services" className="block py-2 text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Services</a>
+          <a href="#technology" className="block py-2 text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Technology</a>
+          <a href="#contact" className="block py-2 text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</a>
+          <div>
+            <Button className="w-full btn-primary">Get Started</Button>
+          </div>
         </div>
       </div>
     </header>
